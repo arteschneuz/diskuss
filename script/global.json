@@ -1,0 +1,16 @@
+﻿{
+  "projectKey" : "diskuss",
+  "server": "http://188.194.18.92:8088",
+  "sourceRoot": "diskuss",
+  "googleAPIsUrl": "https://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=-1&output=xml&callback=?&q=",
+  "commentServer": "https://freesprech.wordpress.com",
+  "commentServerUnknownLink": "unknown_article_TODO",
+  "mediaData": [
+    { "id": "focus", "active": true, "targetKey": "focus", "display": "Focus Online", "url": "^http://www\\.focus\\.de/.+\\.html.?", "icon": "http://www.focus.de/favicon.ico"},
+    { "id": "spiegel", "active": true, "targetKey": "spiegel", "display": "SPIEGEL ONLINE", "url": "^http://www\\.spiegel\\.de/.+\\.html.?", "icon": "http://www.spiegel.de/favicon.ico"},
+    { "id": "faz", "active": true, "targetKey": "faz", "display": "F.A.Z. Online", "url": "^http://www\\.faz\\.net/.+\\.html.?", "icon": "http://www.faz.net/favicon.ico"},
+    { "id": "hartaberfair", "active" : true, "targetKey": "hart-aber-fair", "display": "hart aber fair", "url": "^http://www1\\.wdr\\.de/daserste/hartaberfair/.+\\.html.?", "icon": "http://www.ard.de/favicon.ico"},
+    { "id": "maybritillner", "active": true,  "targetKey": "maybrit-illner", "display": "Maybrit Illner", "url": "^http://www\\.zdf\\.de/maybrit-illner/.+\\.html.?", "icon": "http://www.zdf.de/favicon.ico"},
+    { "id": "tagesschau", "active": true, "targetKey": "tagesschau", "display": "tagesschau", "url": "^http://www\\.tagesschau\\.de/.+\\.html.?", "icon": "http://www.tagesschau.de/favicon.ico"}
+  ]
+}
