@@ -17,8 +17,8 @@ function isMatchingMediaArticle(e) {
     handleException(ex, "isMatchingMediaArticle");
   }
 
-  if(debug) {
-    alert("headline: " + getHeadline());
+  if(debug) {    
+    alert("headlinee: " + getHeadline());
     alert("topLinkElement: " + getTopLinkElement());
     alert("getBottomLinkElement: " + getBottomLinkElement());
   }
