@@ -52,7 +52,6 @@ function initOptions() {
       document.getElementById("bottomDisplay").onchange = saveDisplayChanged;
 
       // Connect changed media sources to function
-
       for(var i in globals.mediaData) {
         if(globals.mediaData[i].active) {
           document.getElementById(globals.mediaData[i].id).onchange = saveCheckChanged;
@@ -92,7 +91,9 @@ function displayOptionValues() {
   chrome.runtime.sendMessage(globalsKey, function(globals) {
     if(globals) {
       for(var i in globals.mediaData) {
-        chrome.runtime.sendMessage({ key: "getOptionValue", optionKey: globals.mediaData[i].id }, setOptionValueCallback);
+        if(exchangeData.globals.mediaData[i].active) {
+          chrome.runtime.sendMessage({ key: "getOptionValue", optionKey: globals.mediaData[i].id }, setOptionValueCallback);
+        }
       }
     }
   });

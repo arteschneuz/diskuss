@@ -1,0 +1,62 @@
+﻿{
+  "appName": {
+    "message": ":Diskuss"
+  },
+  "appDescription": {
+    "message": "With :Diskuss, you finally can :diskuss uncensored on the web"
+  },
+  "settingsHeaderDisplay": {
+    "message": "Link position on the web page"
+  },
+  "settingsHeaderCommon": {
+    "message": "Common settings"
+  },
+  "settingsCommonDisplayHeaderIconAsButton": {
+    "message": "Display button instead of speech balloon in the header section"
+  },
+  "settingsCommonDisplayLinkIconAsButton": {
+    "message": "Display button instead of speech balloon in the text link section"
+  },
+  "settingsCommonDisplayLinkProjectName": {
+    "message": "Mention :Diskuss in the text link section"
+  },
+  "settingsCommonDisplayHeaderIcon": {
+    "message": "Display header icon"
+  },
+  "settingsCommonMouseOverDisplay": {
+    "message": "Display / hide comment box on mouseover / mouseout events"
+  },
+  "settingsDisplayBoth": {
+    "message": "Top and bottom of the article on the web page"
+  },
+  "settingsDisplayTop": {
+    "message": "Top of the article on the web page"
+  },
+  "settingsDisplayBottom": {
+    "message": "Bottom of the article on the web page"
+  },
+  "settingsHeaderMedia": {
+    "message": "Active media sources"
+  },
+  "settingsDefaultValues": {
+    "message": "Default settings"
+  },
+  "mediaPageLinkText": {
+    "message": "Comment this article uncensored"
+  },
+  "mediaPageLinkTextProject": {
+    "message": ":Diskuss this article uncensored"
+  },
+  "mediaPageCommentText1": {
+    "message": "1 comment posted"
+  },
+  "mediaPageCommentTextX": {
+    "message": "{0} comments posted"
+  },
+  "commentsBoxNoPost": {
+    "message": "No comments have been posted yet!"
+  }, 
+  "settingsIconLabel": {
+    "message": "Settings :Diskuss"
+  }
+}

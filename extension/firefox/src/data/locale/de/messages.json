@@ -1,0 +1,62 @@
+﻿{
+  "appName": {
+    "message": ":Diskuss"
+  },
+  "appDescription": {
+    "message": "Mit :Diskuss können Sie endlich unzensiert im Web diskutieren"
+  },
+  "settingsHeaderDisplay": {
+    "message": "Linkposition auf der Webseite"
+  },
+  "settingsHeaderCommon": {
+    "message": "Allgemeine Einstellungen"
+  },
+  "settingsCommonDisplayHeaderIconAsButton": {
+    "message": "Anstatt der Sprechblase wird ein Button in der Überschrift angezeigt"
+  },
+  "settingsCommonDisplayLinkIconAsButton": {
+    "message": "Anstatt der Sprechblase wird ein Button bei der Linkdarstellung angezeigt"
+  },
+  "settingsCommonDisplayLinkProjectName": {
+    "message": "Im Text der Linkdarstellung wird :Diskus angezeigt"
+  },
+  "settingsCommonDisplayHeaderIcon": {
+    "message": "Anzeige eines Icons in der Überschrift"
+  },
+  "settingsCommonMouseOverDisplay": {
+    "message": "Anzeigen / ausblenden der Kommentarbox bei Mausbewegungen über die Icons"
+  },
+  "settingsDisplayBoth": {
+    "message": "Im oberen und unteren Bereich des Artikels"
+  },
+  "settingsDisplayTop": {
+    "message": "Im oberen Bereich des Artikels"
+  },
+  "settingsDisplayBottom": {
+    "message": "Im unteren Bereich des Artikels"
+  },
+  "settingsHeaderMedia": {
+    "message": "Aktive Medienquellen"
+  },
+  "settingsDefaultValues": {
+    "message": "Standardeinstellungen"
+  },
+  "mediaPageLinkText": {
+    "message": "Kommentieren Sie unzensiert diesen Artikel"
+  },
+  "mediaPageLinkTextProject": {
+    "message": ":Diskuss unzensiert diesen Artikel"
+  },
+  "mediaPageCommentText1": {
+    "message": "Insgesamt ein Beitrag"
+  },
+  "mediaPageCommentTextX": {
+    "message": "Insgesamt {0} Beiträge"
+  },
+  "commentsBoxNoPost": {
+    "message": "Es wurden noch keine Beträge eingestellt!"
+  },
+  "settingsIconLabel": {
+    "message": "Einstellungen :Diskuss"
+  }
+}
