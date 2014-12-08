@@ -85,7 +85,7 @@ function getActiveMediaHeader() {
 
 chrome.runtime.onMessage.addListener(
   function(request, sender, response) {
-    if(request == "globals") { 
+    if(request == "globals") {
       response(globals);
     }
     else if(request.key == "getOptionValue") {
@@ -107,19 +107,20 @@ chrome.runtime.onMessage.addListener(
     else if(request.key == "getControllerSettings") {
       var displayPositionValue = localStorage.getItem("displayPosition");
       var controllerSettings = { matchingMediaId: request.matchingMediaId,
-                                 matchingMediaTargetKey: request.matchingMediaTargetKey,
-                                 globals: globals,
-                                 linkText: localStorage.getItem("settingsCommonDisplayLinkProjectName") == "true" ? chrome.i18n.getMessage("mediaPageLinkTextProject") : chrome.i18n.getMessage("mediaPageLinkText"),
-                                 commentsCounterText1: chrome.i18n.getMessage("mediaPageCommentText1"),
-                                 commentsBoxNoPost: chrome.i18n.getMessage("commentsBoxNoPost"),
-                                 commentsCounterTextX: chrome.i18n.getMessage("mediaPageCommentTextX"),  
-                                 displayHeaderIcon: localStorage.getItem("settingsCommonDisplayHeaderIcon") == "true",
-                                 displayTopLink: displayPositionValue == "-1" || displayPositionValue == "2",
-                                 displayBottomLink: displayPositionValue == "1" || displayPositionValue == "2",
-                                 displayHeaderIconButton: localStorage.getItem("settingsCommonDisplayHeaderIconAsButton") == "true",
-                                 displayCommentsOnMouseOver: localStorage.getItem("settingsCommonMouseOverDisplay") == "true",
-                                 displayLinkIconButton: localStorage.getItem("settingsCommonDisplayLinkIconAsButton") == "true" };
-                        
+        matchingMediaTargetKey: request.matchingMediaTargetKey,
+        globals: globals,
+        linkText: localStorage.getItem("settingsCommonDisplayLinkProjectName") == "true" ? chrome.i18n.getMessage("mediaPageLinkTextProject") : chrome.i18n.getMessage("mediaPageLinkText"),
+        commentsCounterText1: chrome.i18n.getMessage("mediaPageCommentText1"),
+        commentsBoxNoPost: chrome.i18n.getMessage("commentsBoxNoPost"),
+        commentsCounterTextX: chrome.i18n.getMessage("mediaPageCommentTextX"),
+        displayHeaderIcon: localStorage.getItem("settingsCommonDisplayHeaderIcon") == "true",
+        displayTopLink: displayPositionValue == "-1" || displayPositionValue == "2",
+        displayBottomLink: displayPositionValue == "1" || displayPositionValue == "2",
+        displayHeaderIconButton: localStorage.getItem("settingsCommonDisplayHeaderIconAsButton") == "true",
+        displayCommentsOnMouseOver: localStorage.getItem("settingsCommonMouseOverDisplay") == "true",
+        displayLinkIconButton: localStorage.getItem("settingsCommonDisplayLinkIconAsButton") == "true"
+      };
+
       response(controllerSettings);
     }
   }

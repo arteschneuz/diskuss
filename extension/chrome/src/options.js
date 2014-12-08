@@ -89,9 +89,10 @@ function displayOptionValues() {
 
   // Media values
   chrome.runtime.sendMessage(globalsKey, function(globals) {
+
     if(globals) {
       for(var i in globals.mediaData) {
-        if(exchangeData.globals.mediaData[i].active) {
+        if(globals.mediaData[i].active) {
           chrome.runtime.sendMessage({ key: "getOptionValue", optionKey: globals.mediaData[i].id }, setOptionValueCallback);
         }
       }

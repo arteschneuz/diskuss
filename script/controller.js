@@ -191,7 +191,7 @@ function renderMediaPage() {
   try {
     // Render comments section
     var projectLinkColor = "rgb(255, 65, 10)";
-    $($("body")[0]).append("<div id=\"" + settings.globals.projectKey + "-comments-box" + "\" style=\"word-wrap:break-word; font-size: 13px; color: black; box-shadow: 0 0 5px 5px rgb(200, 200, 200); font-family: Verdana;  position: absolute; z-index: 999; width: 400px; top: 10px; left: 10px; border: 1px solid rgb(177, 177, 185); background: rgb(230, 230, 230); display: none\"></div>");
+    $($("body")[0]).append("<div id=\"" + settings.globals.projectKey + "-comments-box" + "\" style=\"word-wrap:break-word; font-size: 13px; color: black; box-shadow: 0 0 5px 5px rgb(200, 200, 200); font-family: 'Segoe UI', Tahoma, sans-serif;  position: absolute; z-index: 999; width: 400px; top: 10px; left: 10px; border: 1px solid rgb(177, 177, 185); background: rgb(230, 230, 230); display: none\"></div>");
     var commentsBox = $("#" + settings.globals.projectKey + "-comments-box");
     // Append header
     commentsBox.append("<div style=\"height: 50px; z-index: 1000; border-bottom: 1px solid rgb(177, 177, 185)\"><img src=\"" + settings.globals.server + "/" + settings.globals.sourceRoot + "/img/logo.png" + "\" style=\"border: 0px; width: 80px; height: 20px; padding-left: 7px; padding-top: 17px\" /></div>");
