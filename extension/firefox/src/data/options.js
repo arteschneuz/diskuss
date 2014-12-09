@@ -1,4 +1,4 @@
-﻿var exchangeDataKey = "getExchangeDataForOptions";
+﻿var exchangeDataKey = "getExchangeData";
 var exchangeData = null;
 
 // Get exchange data

@@ -1,5 +1,5 @@
 ﻿function getHeadline() {
-  return $("h2.article-title > span").get(1).innerText;
+  return $("h2.article-title > span").get(1).textContent;
 }
 
 function getMetaHeadline() {

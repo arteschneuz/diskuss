@@ -9,11 +9,11 @@ var isString = require('sdk/lang/type').isString;
 
 // Global variables
 var localizedMessages = null;
-var optionsPort = null;
 var globals = null;
 var appServer = "http://188.194.18.92:8088";
 var sourceRoot = "diskuss";
 var sessionInited = false;
+var optionsWorker = null;
 var commonSettingsKeys = ["settingsCommonDisplayHeaderIcon", "settingsCommonMouseOverDisplay", "settingsCommonDisplayHeaderIconAsButton", "settingsCommonDisplayLinkIconAsButton", "settingsCommonDisplayLinkProjectName"];
 
 // Since SDK does not yet support default locale, we load the supported JSON locale messages through XHR
@@ -111,53 +111,86 @@ var settingsIcon = require("sdk/ui/button/action").ActionButton({
 
   onClick: function () {
     // Since SDK does not yet support dynamic preferences, we handle the preferences with a custom options page
-    require("sdk/tabs").open(self.data.url("options.htm"));
+    tabs.open(self.data.url("options.htm"));
   }
 });
+
+function getOptionActiveMediaHeader() {
+  var activeMediaSources = 0;
+  var activeUserMediaSources = 0;
+
+  for(var i in globals.mediaData) {
+    if(globals.mediaData[i].active) {
+      activeMediaSources++;
+
+      if(addonCache.storage[globals.mediaData[i].id]) {
+        activeUserMediaSources++;
+      }
+    }
+  }
+   
+  return localizedMessages["settingsHeaderMedia"].message + " [" + activeMediaSources + ":" + activeUserMediaSources + "]";
+}
 
 function handlePageLoaded(tab) {
   var pageUrl = tab.url;
 
   // Handle options page
   if(pageUrl.indexOf("options.htm") != -1) {
-    optionsPort = tab.attach({ contentScriptFile: [self.data.url("options.js")],
+    optionsWorker = tab.attach({ contentScriptFile: [self.data.url("options.js")],
       onMessage: optionsMessageCallback
     });
   }
   else {
-    // Check supported media page
-    console.log("Check supported media page");
+    // Include content script
+    var contentWorker = tab.attach({ contentScriptFile: [self.data.url("content.js")]
+    });
+
+    contentWorker.port.on("getExchangeData", function() {
+      contentWorker.port.emit("getExchangeData", { globals: globals, commonSettingsKeys: commonSettingsKeys, localizedMessages: localizedMessages, selfData: self.data.url() });
+    });
+    contentWorker.port.on("getOptionValue", function(message) {
+      contentWorker.port.emit("getOptionValue", { optionKey: message.optionKey, optionValue: addonCache.storage[message.optionKey] });
+    });
+    contentWorker.port.on("getControllerSettings", function(message) {
+      var displayPositionValue = addonCache.storage["displayPosition"];
+      // Assemble controller settings
+      var controllerSettings = {
+        matchingMediaId: message.matchingMediaId,
+        matchingMediaTargetKey: message.matchingMediaTargetKey,
+        globals: globals,
+        linkText: addonCache.storage["settingsCommonDisplayLinkProjectName"] == true ? localizedMessages["mediaPageLinkTextProject"].message : localizedMessages["mediaPageLinkText"].message,
+        commentsCounterText1: localizedMessages["mediaPageCommentText1"].message,
+        commentsBoxNoPost: localizedMessages["commentsBoxNoPost"].message,
+        commentsCounterTextX: localizedMessages["mediaPageCommentTextX"].message,
+        displayHeaderIcon: addonCache.storage["settingsCommonDisplayHeaderIcon"] == true,
+        displayTopLink: displayPositionValue == "-1" || displayPositionValue == "2",
+        displayBottomLink: displayPositionValue == "1" || displayPositionValue == "2",
+        displayHeaderIconButton: addonCache.storage["settingsCommonDisplayHeaderIconAsButton"] == true,
+        displayCommentsOnMouseOver: addonCache.storage["settingsCommonMouseOverDisplay"] == true,
+        displayLinkIconButton: addonCache.storage["settingsCommonDisplayLinkIconAsButton"] == true
+      };
+
+      contentWorker.port.emit("getControllerSettings", controllerSettings);
+    });
   }
 }
 
 function optionsMessageCallback(message) {
-  if(message.key == "getExchangeDataForOptions") {
-    optionsPort.port.emit(message.key, { globals: globals, commonSettingsKeys: commonSettingsKeys, localizedMessages: localizedMessages });
+  if(message.key == "getExchangeData") {
+    optionsWorker.port.emit(message.key, { globals: globals, commonSettingsKeys: commonSettingsKeys, localizedMessages: localizedMessages });
   }
   else if(message.key == "setOptionValue") {
     addonCache.storage[message.optionKey] = message.optionValue;
   }
   else if(message.key == "setDefaultOptions") {
     setDefaultOptionValues();
-    optionsPort.port.emit(message.key);
+    optionsWorker.port.emit(message.key);
   }
   else if(message.key == "getOptionValue") {
-    optionsPort.port.emit(message.key, { optionKey: message.optionKey, optionValue: addonCache.storage[message.optionKey] });
+    optionsWorker.port.emit(message.key, { optionKey: message.optionKey, optionValue: addonCache.storage[message.optionKey] });
   }
   else if(message.key == "getOptionActiveMediaHeader") {
-    var activeMediaSources = 0;
-    var activeUserMediaSources = 0;
-
-    for(var i in globals.mediaData) {
-      if(globals.mediaData[i].active) {
-        activeMediaSources++;
-
-        if(addonCache.storage[globals.mediaData[i].id]) {
-          activeUserMediaSources++;
-        }
-      }
-    }
-
-    optionsPort.port.emit(message.key, { mediaHeader: localizedMessages["settingsHeaderMedia"].message + " [" + activeMediaSources + ":" + activeUserMediaSources + "]" });
+    optionsWorker.port.emit(message.key, { mediaHeader: getOptionActiveMediaHeader() });
   }
 }

@@ -17,14 +17,14 @@ function isMatchingMediaArticle(e) {
     handleException(ex, "isMatchingMediaArticle");
   }
 
-  if(debug) {    
-    alert("headlinee: " + getHeadline());
+  if(debug) {
+    alert("headline: " + getHeadline());
     alert("topLinkElement: " + getTopLinkElement());
     alert("getBottomLinkElement: " + getBottomLinkElement());
   }
 
   // Fire event
-  if(matchingMediaArticle) {
+  if(matchingMediaArticle) { 
     var matchingMediaArticleEvent = new CustomEvent("reportMatchingMedia");
     document.dispatchEvent(matchingMediaArticleEvent);
   }
@@ -45,7 +45,7 @@ function initController(e) {
   makeAJAXCall(settings.globals.googleAPIsUrl + encodeURIComponent(settings.globals.commentServer + "/category/" + settings.matchingMediaTargetKey + "/feed?" + new Date().getTime()), 'jsonp', categoryFeedsCallback);
 }
 
-function categoryFeedsCallback(response) {
+function categoryFeedsCallback(response) { 
   if(response.responseStatus == 200) {
     var mediaURL = new String(window.location);
     var communityResponse = $.parseXML(response.responseData.xmlString);
@@ -59,7 +59,13 @@ function categoryFeedsCallback(response) {
         // Check matching media page
         if(communityMediaURL && mediaURL.indexOf(communityMediaURL) != -1) {
           // Found matching article, get comments and url
-          var commentsCounter = $($(items[i]).find("comments")[1]).text();
+
+          var commentsCounter = $($(items[i]).find("slash\\:comments")[0]).text();
+
+          if(commentsCounter == "") {
+            commentsCounter = $($(items[i]).find("comments")[1]).text();
+          }
+
           var externalLink = $($(items[i]).find("link")[0]).text();
           var displayCommentsCounter = commentsCounter > 3 ? 3 : commentsCounter;
           var externalCommentsLink = $($(items[i]).find("comments")[0]).text();
@@ -86,19 +92,23 @@ function categoryFeedsCallback(response) {
   }
 }
 
-function communityArticleInfosCallback(response) {
+function communityArticleInfosCallback(response) { 
   if(response.responseStatus == 200) {
     var commentsResponse = $.parseXML(response.responseData.xmlString);
     var items = $(commentsResponse).find("item");
 
-    if(!$.isEmptyObject(items[0])) {
+    if(!$.isEmptyObject(items[0])) { 
       for(var i = 0; i < items.length; i++) {
         var author = $($(items[i]).find("title")[0]).text().substring(5);
         var link = $($(items[i]).find("link")[0]).text();
         var timestamp = $($(items[i]).find("pubDate")[0]).text().substring(0, 25);
         var text = $($(items[i]).find("description")[0]).text();
-        var code = $($(items[i]).find("encoded")[0]).text();
-     
+        var code = $($(items[i]).find("content\\:encoded")[0]).text();
+
+        if(code == "") {
+          code = $($(items[i]).find("encoded")[0]).text();
+        }
+
         // Set community infos
         communityInfos.commentsInfos[i] = { author: author, link: link, timestamp: timestamp, text: text, code: code };
       }
@@ -117,7 +127,7 @@ function makeAJAXCall(url, dataType, callback) {
   });
 }
 
-function renderMediaPage() {
+function renderMediaPage() { 
   var linkCommentsCounterText = (communityInfos.commentsCounter == 1 ? settings.commentsCounterText1 : settings.commentsCounterTextX.replace("{0}", communityInfos.commentsCounter));
   var topLinkElement = null;
   var bottomLinkElement = null;
@@ -191,7 +201,7 @@ function renderMediaPage() {
   try {
     // Render comments section
     var projectLinkColor = "rgb(255, 65, 10)";
-    $($("body")[0]).append("<div id=\"" + settings.globals.projectKey + "-comments-box" + "\" style=\"word-wrap:break-word; font-size: 13px; color: black; box-shadow: 0 0 5px 5px rgb(200, 200, 200); font-family: 'Segoe UI', Tahoma, sans-serif;  position: absolute; z-index: 999; width: 400px; top: 10px; left: 10px; border: 1px solid rgb(177, 177, 185); background: rgb(230, 230, 230); display: none\"></div>");
+    $($("body")[0]).append("<div id=\"" + settings.globals.projectKey + "-comments-box" + "\" style=\"word-wrap:break-word; font-size: 13px; color: black; box-shadow: 0 0 5px 5px rgb(200, 200, 200); font-family: Verdana;  position: absolute; z-index: 999; width: 400px; top: 10px; left: 10px; border: 1px solid rgb(177, 177, 185); background: rgb(230, 230, 230); display: none\"></div>");
     var commentsBox = $("#" + settings.globals.projectKey + "-comments-box");
     // Append header
     commentsBox.append("<div style=\"height: 50px; z-index: 1000; border-bottom: 1px solid rgb(177, 177, 185)\"><img src=\"" + settings.globals.server + "/" + settings.globals.sourceRoot + "/img/logo.png" + "\" style=\"border: 0px; width: 80px; height: 20px; padding-left: 7px; padding-top: 17px\" /></div>");
