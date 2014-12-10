@@ -133,10 +133,8 @@ function getOptionActiveMediaHeader() {
 }
 
 function handlePageLoaded(tab) {
-  var pageUrl = tab.url;
-
   // Handle options page
-  if(pageUrl.indexOf("options.htm") != -1) {
+  if(tab.url == self.data.url("options.htm")) {
     optionsWorker = tab.attach({ contentScriptFile: [self.data.url("options.js")],
       onMessage: optionsMessageCallback
     });

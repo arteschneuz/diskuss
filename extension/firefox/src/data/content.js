@@ -55,6 +55,7 @@ self.port.on("getOptionValue", function(message) {
 });
 
 function jQueryInstalledCallback() {
+  // Inject media script
   injectScript(exchangeData.globals.server + "/" + exchangeData.globals.sourceRoot + "/script/media/" + matchingMediaId + ".js", matchingMediaId, mediaScriptInstalled);
 }
 
