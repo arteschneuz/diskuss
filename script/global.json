@@ -1,6 +1,6 @@
 ﻿{
+  "server": "http://diskuss.no-ip.org:8088",
   "projectKey" : "diskuss",
-  "server": "http://188.194.18.92:8088",
   "sourceRoot": "diskuss",
   "googleAPIsUrl": "https://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=-1&output=xml&callback=?&q=",
   "commentServer": "https://freesprech.wordpress.com",

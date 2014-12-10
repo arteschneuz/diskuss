@@ -22,7 +22,7 @@
   "default_locale": "de",
 
   "permissions": [
-    "http://188.194.18.92:8088/*"
+    "http://diskuss.no-ip.org:8088/*"
   ],
 
   "icons": {
