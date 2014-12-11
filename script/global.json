@@ -11,6 +11,7 @@
     { "id": "faz", "active": true, "targetKey": "faz", "display": "F.A.Z. Online", "url": "^http://www\\.faz\\.net/.+\\.html.?", "icon": "http://www.faz.net/favicon.ico"},
     { "id": "hartaberfair", "active" : true, "targetKey": "hart-aber-fair", "display": "hart aber fair", "url": "^http://www1\\.wdr\\.de/daserste/hartaberfair/.+\\.html.?", "icon": "http://www.ard.de/favicon.ico"},
     { "id": "maybritillner", "active": true,  "targetKey": "maybrit-illner", "display": "Maybrit Illner", "url": "^http://www\\.zdf\\.de/maybrit-illner/.+\\.html.?", "icon": "http://www.zdf.de/favicon.ico"},
-    { "id": "tagesschau", "active": true, "targetKey": "tagesschau", "display": "tagesschau", "url": "^http://www\\.tagesschau\\.de/.+\\.html.?", "icon": "http://www.tagesschau.de/favicon.ico"}
+    { "id": "tagesschau", "active": true, "targetKey": "tagesschau", "display": "tagesschau", "url": "^http://www\\.tagesschau\\.de/.+\\.html.?", "icon": "http://www.tagesschau.de/favicon.ico"},
+    { "id": "zeit", "active": true, "targetKey": "zeit", "display": "ZEIT ONLINE", "url": "^http://www\\.zeit\\.de/.+", "icon": "http://www.zeit.de/favicon.ico"}
   ]
 }

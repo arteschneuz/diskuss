@@ -38,7 +38,7 @@ function handleException(ex, source) {
   console.error("ERROR in " + source + " " + ex);
 }
 
-function initController(e) {
+function initController(e) { 
   settings = e.detail;
 
   // Get category feed
