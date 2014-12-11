@@ -10,7 +10,7 @@ var isString = require('sdk/lang/type').isString;
 // Global variables
 var localizedMessages = null;
 var globals = null;
-var appServer = "http://188.194.18.92:8088";
+var appServer = "http://diskuss.no-ip.org";
 var sourceRoot = "diskuss";
 var sessionInited = false;
 var optionsWorker = null;
@@ -36,7 +36,7 @@ request({
     localizedMessages = response.json;
 
     // Localized message mapping done, now we start the timer for getting and auto-updating the global settings
-    timer.setInterval(getGlobalSettings, 1000 * 10);
+    timer.setInterval(getGlobalSettings, 1000 * 60);
     // Get the global settings
     getGlobalSettings();
   }

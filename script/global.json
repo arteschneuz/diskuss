@@ -1,5 +1,5 @@
 ﻿{
-  "server": "http://diskuss.no-ip.org:8088",
+  "server": "http://diskuss.no-ip.org",
   "projectKey" : "diskuss",
   "sourceRoot": "diskuss",
   "googleAPIsUrl": "https://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=-1&output=xml&callback=?&q=",

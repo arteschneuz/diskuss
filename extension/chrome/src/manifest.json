@@ -22,12 +22,14 @@
   "default_locale": "de",
 
   "permissions": [
-    "http://diskuss.no-ip.org:8088/*"
+    "http://diskuss.no-ip.org/*"
   ],
 
   "icons": {
     "16": "icons/16.png",
     "48": "icons/48.png",
     "128": "icons/128.png"
-  }
+  },
+
+   "minimum_chrome_version": "31"  
 }

@@ -78,8 +78,16 @@ function matchingMediaPageFound() {
 }
 
 self.port.on("getControllerSettings", function(settings) {
+  var clone = settings;
+
   // Hello SDK developer, why do I have to do this?
-  var clone = cloneInto(settings, document.defaultView);
+  try {
+    clone = cloneInto(settings, document.defaultView);
+  }
+  catch(ex) {
+    // Ignore this error on FF 29 and lower
+  }
+
   // Pass all settings and options values and start rendering
   var renderMediaPageEvent = new CustomEvent("initController", { "detail": clone });
   // Fire event

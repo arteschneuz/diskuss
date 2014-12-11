@@ -1,0 +1,4 @@
+Chrome ab Version 31 (13. November 2013)
+Firefox ab Version 29 (29. April 2014)
+
+Alle älteren Versionen lassen sich nicht installieren und werden daher nicht supported.

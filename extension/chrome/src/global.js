@@ -1,7 +1,7 @@
 ﻿var commonSettingsKeys = ["settingsCommonDisplayHeaderIcon", "settingsCommonMouseOverDisplay", "settingsCommonDisplayHeaderIconAsButton", "settingsCommonDisplayLinkIconAsButton", "settingsCommonDisplayLinkProjectName"];
 var globals = null;
 var sessionInited = false;
-var appServer = "http://diskuss.no-ip.org:8088";
+var appServer = "http://diskuss.no-ip.org";
 var sourceRoot = "diskuss";
 
 // Load media data and set interval for updating media data
